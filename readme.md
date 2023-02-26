@@ -37,7 +37,7 @@ prev.addEventListener('click', () => {
 ### 04_Hidden Search Widget
 💻 주제 : 돋보기를 누르면 검색 창이 늘어남.
 - 토글 메서드를 통해 버튼을 클릭 시 active라는 클래스를 만들거나 제거할 수 있게 함.
-✔️ toggle() <br>
+<br> ✔️ toggle() <br>
 토글이란 add(), remove() 메서드를 한 번에 쓸 수 있음. 보통 click 이벤트에 classList를 이용해 toggle로 css에 style을 준 클래스명을 on/off 함.
 ### 05_Blurry Loading
 💻 주제 : 퍼센트가 100까지 채워지면서 흐릿했던 배경이 점점 선명하게 변함.
@@ -149,3 +149,26 @@ window.addEventListener('keydown', (event) => {
   `;
 })
 ```
+
+### 12_FAQ Collapse
+💻 주제 : 접혀있던 질문지를 선택했을 때 카드가 아래로 확장됨.
+-  font-awesome을 통해 유니코드로 이모지를 받아옴.
+```html
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+```
+```css
+content: '\f075';
+```
+- querySelectorAll로 토글 버튼 가져오기
+- 노드 목록을 이용해 반복문을 통과하고 각각의 토글에는 이벤트를 추가함.(클릭이벤트)
+- 부모 클래스 토글(active 클래스)
+```js
+toggles.forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    toggle.parentNode.classList.toggle('active');
+  })
+})
+```
+
+### 13_Random Choice Picker
+💻 주제 : 입력란에 단어를 입력하면 하단에 태그가 생김. 콤마(,)를 통해 여러 개의 태그를 만들 수 있음.
