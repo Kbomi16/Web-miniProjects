@@ -58,6 +58,7 @@ if (randomTag !== undefined) {
   }, times * 100)
 }
 
+// 무작위로 하이라이트를 넣을 태그를 고름.
 function pickRandomTag() {
   const tags = document.querySelectorAll('.tag')
   return tags[Math.floor(Math.random() * tags.length)]

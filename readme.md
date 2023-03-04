@@ -172,3 +172,34 @@ toggles.forEach(toggle => {
 
 ### 13_Random Choice Picker
 💻 주제 : 입력란에 단어를 입력하면 하단에 태그가 생김. 콤마(,)를 통해 여러 개의 태그를 만들 수 있음.
+- 무작위로 하이라이트를 넣을 태그를 고름.
+- classList의 add, remove로 하이라이트를 준다.
+
+### 14_Animated Navigation
+💻 주제 : 네비게이션 바의 X를 누르면 네비바가 줄어들면서 햄버거 바로 전환된다.
+- rotate를 활용한 css가 많음.
+- toggle 메서드를 이용해 active 클래스를 붙이거나 제거하여 네비 바에 애니메이션을 적용함.
+
+### Incrementing Counter
+💻 주제 : 숫자 증감 + 반응형 페이지
+- 초기 counter 값은 0
+❗아래 결과 값은 string ${target값}으로 나온다.
+```js
+const target = counter.getAttribute('data-target');
+console.log(typeof target, target);
+```
+❗counter 앞에 parseInt나 +기호를 붙이면 number로 type이 바뀐다.
+```js
+const target = +counter.getAttribute('data-target');
+console.log(typeof target, target);
+```
+- c가 target이 되기전에는 counter가 올라가고 target지점에 도달 시 숫자 증가가 멈춤.
+```js
+if(c < target) {
+      // ceil : 반올림 메서드
+      counter.innerText = `${Math.ceil(c + increment)}`;
+      setTimeout(updateCounter, 1);
+    } else {
+      counter.innerText = target;
+    }
+```
