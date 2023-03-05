@@ -1,3 +1,23 @@
+### ⭐참고⭐
+##### 1. font awesome
+```html
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+```
+```css
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+```
+
+##### 2. 사용자 지정 CSS
+- root로 색을 지정하고 var()로 적용시킬 수 있음.
+```css
+:root {
+  --border-color: #144fc6;
+}
+.cup {
+  border: 4px solid var(--border-color);
+}
+```
+
 ### 01_Expanding Cards
 💻 주제 : 카드를 눌렀을 때 접혀져있던 카드가 크게 나타남.
 - classList의 add, remove 기능을 활용해 패널을 active 상태로 만듦.
@@ -203,3 +223,69 @@ if(c < target) {
       counter.innerText = target;
     }
 ```
+
+### 16_Drink Water
+💻 주제 : 물병을 클릭하면 큰 물병 안에 물이 채워진다.
+- Small 컵을 클릭시 Big 컵에 물이 담긴다.
+```js
+// smallCups의 개수는 총 8개. 인덱스는 0~7. 클릭시 하이라이트 효과를 줄거임.
+smallCups.forEach((cup, idx)=> {
+  cup.addEventListener('click', () => highlightCups(idx));
+})
+
+// 인덱스가 작은 컵들을 통과하는 반복문을 통해 특정 반복문이 클릭한 인덱스보다 작거나 같은지 확인.
+function highlightCups(idx) {
+  // smallCups의 배열에서 현재 인덱스(클릭한 인덱스)를 확인하고 배열 목록에서 클릭한 인덱스를 포함하고 있는지 확인한다.(contains 메서드)
+  // 특정 클래스를 확인할 때 full을 포함하는지 확인하고 다음 인덱스가 full을 포함하지 않는지도 확인한다.
+  if(smallCups[idx].classList.contains('full') && !smallCups[idx].nextElementSibling.classList.contains('full')) {
+    idx--;
+
+  }
+
+  smallCups.forEach((cup, idx2) => {
+    if(idx2 <= idx) {
+      cup.classList.add('full');
+    } else {
+      cup.classList.remove('full');
+    }
+  })
+  updateBigCup();
+}
+```
+```js
+function updateBigCup() {
+  // 채워진 작은 컵의 개수를 fullCups라는 변수에 선언.
+  const fullCups = document.querySelectorAll('.cup-small.full').length;
+
+  const totalCups = smallCups.length;
+
+  if(fullCups === 0) {
+    percentage.style.visibility = 'hidden';
+    percentage.style.height = 0;
+  } else {
+    percentage.style.visibility = 'visible';
+    percentage.style.height = `${fullCups / totalCups * 330}px`;
+    percentage.innerText = `${fullCups / totalCups *100}%`;
+  }
+
+  // 컵이 다 차면 remained 글자가 없어져야 함.
+  if(fullCups === totalCups) {
+    remained.style.visibility = 'hidden';
+    remained.style.height = 0;
+  } else {
+    remained.style.visibility = 'visible';
+    // 아직 채워야 하는 리터양을 보여줌.
+    liters.innerText = `${2 - (250 * fullCups / 1000)}`;
+  }
+
+}
+```
+
+### 17_Movie App
+💻 주제 : API를 활용한 영화 소개 페이지.
+- TMDB의 API를 사용해 영화 제목, 등급, 이미지가 있는 영화 데이터베이스를 받는다.
+❗ https://www.themoviedb.org/settings/api
+- UI(HTML, CSS)를 만들고, API 키를 IMDB 서비스에 등록한다.
+- JavaScript를 추가해 Fetch 요청을 만들어 당시 가장 인기 있었던 영화를 보여줄 데이터를 얻는다.
+- 8 이상 : 초록 | 5 ~ 8 : 주황 | 5 이하 : 빨강
+- 검색기능을 통해 제목 검색 가능
