@@ -18,6 +18,15 @@
 }
 ```
 
+##### 3. Position 속성
+|값|의미|
+|---|---|---|
+|static|기준없음(배치 불가능, 기본값)|
+|relative|요소 자기 자신을 기준으로 배치|
+|absolute|부모 요소를 기준으로 배치|
+|fixed|뷰포트 기분으로 배치|
+|stickey|스크롤 영역 기준으로 배치|
+
 ### 01_Expanding Cards
 💻 주제 : 카드를 눌렀을 때 접혀져있던 카드가 크게 나타남.
 - classList의 add, remove 기능을 활용해 패널을 active 상태로 만듦.
@@ -200,9 +209,9 @@ toggles.forEach(toggle => {
 - rotate를 활용한 css가 많음.
 - toggle 메서드를 이용해 active 클래스를 붙이거나 제거하여 네비 바에 애니메이션을 적용함.
 
-### Incrementing Counter
+### 15_Incrementing Counter
 💻 주제 : 숫자 증감 + 반응형 페이지
-- 초기 counter 값은 0
+- 초기 counter 값은 0<br/>
 ❗아래 결과 값은 string ${target값}으로 나온다.
 ```js
 const target = counter.getAttribute('data-target');
@@ -284,8 +293,22 @@ function updateBigCup() {
 ### 17_Movie App
 💻 주제 : API를 활용한 영화 소개 페이지.
 - TMDB의 API를 사용해 영화 제목, 등급, 이미지가 있는 영화 데이터베이스를 받는다.
-❗ https://www.themoviedb.org/settings/api
+<br/>❗ https://www.themoviedb.org/settings/api
 - UI(HTML, CSS)를 만들고, API 키를 IMDB 서비스에 등록한다.
 - JavaScript를 추가해 Fetch 요청을 만들어 당시 가장 인기 있었던 영화를 보여줄 데이터를 얻는다.
 - 8 이상 : 초록 | 5 ~ 8 : 주황 | 5 이하 : 빨강
 - 검색기능을 통해 제목 검색 가능
+
+### 18_Background Slider
+💻 주제 : 이미지를 슬라이드 하면 배경화면의 이미지가 함께 변경된다.
+- 오른쪽, 왼쪽 버튼에  click 메서드를 추가해 이미지가 반복되도록 함.
+- setBgToBody() 함수를 만들어 해당 슬라이드 이미지가 배경 이미지와 같도록 설정.
+```js
+function setBgToBody() {
+  body.style.backgroundImage = slides[activeSlide].style.backgroundImage;
+}
+```
+- classList의 add, remove 기능으로 active 클래스 활성, 비활성화
+
+### 19_Theme Clock
+💻 주제
