@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: steelblue;
+  font-family: 'Muli', sans-serif;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.empty {
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+  border: solid 3px black;
+  background-color: white;
+}
+
+/* 이미지로 채워지는 객체 */
+.fill {
+  background-image: url('https://source.unsplash.com/random/150x150');
+  height: 145px;
+  width: 145px;
+  cursor: pointer;
+}
+
+/* 마우스로 이미지 객체를 클릭하고 있는 동안 border가 유지됨 */
+.hold {
+  border: solid 5px #ccc;
+}
+
+/* 드래그한 이미지가 hoverd된 객체에 hover될 때 */
+.hovered {
+  background-color: #333;
+  border-color: white;
+  border-style: dashed;
+}
+
+@media(max-width: 800px) {
+  body {
+    flex-direction: column;
+  }
+}

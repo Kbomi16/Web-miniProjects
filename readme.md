@@ -46,6 +46,29 @@ p::after {
 ```
 ❗두 속성을 쓸 때 content:''를 추가해야 한다.
 
+##### 5. 메서드 toggle() 
+토글이란 add(), remove() 메서드를 한 번에 쓸 수 있음. 보통 click 이벤트에 classList를 이용해 toggle로 css에 style을 준 클래스명을 on/off 함.
+
+##### 6. transform, translate, transition 차이
+❗transform<br/>
+- Element를 변경시킬 때 사용 ( 위치 이동 , 회전 , 크기 조절 등 )
+- transform 내 사용 : translate , scale , rotate 등
+❗translate<br/>
+- Element를 이동시킬 때 사용
+- X축이나 Y축 기준으로 한 값만 적용시키고 싶을 때는 translateY , translateY를 사용하던가 translate에서 원하지 않는 값에 0을 사용해도 된다.
+❗transition<br/>
+- Element의 CSS 속성을 변경할 때 부드럽게 움직이거나 원하는 대로 적용되도록 애니메이션 속도, 반복 횟수, 조절 등을 할 수 있다.
+
+##### 7. transform : scale()
+- scale 문단의 박스 크기는 그대로 가지고 있지만 item의 크기가 바뀐다.
+- scale 사용 시 가로 세로 사이즈가 0.5로 변경
+- scale을 1로 사용시에는 원래 크기로 변경
+- 앞쪽의 인자가 x축 뒷쪽의 인자가 y축
+- x축만 늘릴고 싶을때는 scaleX()를 사용
+- Y축만 늘릴고 싶을때는 scaleY()를 사용
+
+
+
 <hr>
 
 ### 01_Expanding Cards
@@ -81,14 +104,18 @@ prev.addEventListener('click', () => {
 ```
 - update 함수를 통해 어떤 원이 활성되어야 하는지 classList의 add, remove 기능으로 설정함.
 - currentActive가 1일때(완전 초기화) Prev는 버튼이 안 눌리게 disabled로 설정함.
+
 ### 03_Rotating Navigation
 💻 주제 : 상단 햄버거바를 누르면 화면이 꺾이면서 하단에 내비게이션바가 나타남.
 - classList의 add, remove 기능을 활용해 show-nav 기능을 구현함.
+
 ### 04_Hidden Search Widget
 💻 주제 : 돋보기를 누르면 검색 창이 늘어남.
 - 토글 메서드를 통해 버튼을 클릭 시 active라는 클래스를 만들거나 제거할 수 있게 함.
 <br> ✔️ toggle() <br>
+
 토글이란 add(), remove() 메서드를 한 번에 쓸 수 있음. 보통 click 이벤트에 classList를 이용해 toggle로 css에 style을 준 클래스명을 on/off 함.
+
 ### 05_Blurry Loading
 💻 주제 : 퍼센트가 100까지 채워지면서 흐릿했던 배경이 점점 선명하게 변함.
 - https://stackoverflow.com/questions/10756313/javascript-jquery-map-a-range-of-numbers-to-another-range-of-numbers
@@ -118,6 +145,7 @@ const scale = (number, inMin, inMax, outMin, outMax) => {
   return (number - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
 }
 ```
+
 ### 06_Scroll Animation
 💻주제 : 화면을 스크롤시 내리는 방향에 따라 content박스가 생기거나 제거됨.
 - scroll 메서드를 사용하여 checkBoxes 함수를 실행함.
@@ -352,3 +380,45 @@ hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(hoursForClock, 0
   minuteEl.style.transform = `translate(-50%, -100%) rotate(${scale(minutes, 0, 60, 0, 360)}deg)`;
   secondEl.style.transform = `translate(-50%, -100%) rotate(${scale(seconds, 0, 60, 0, 360)}deg)`;
 ```
+
+### 20_Button Ripple Effect
+💻 주제 : 버튼 클릭시 마우스 포인터에 파급 효과를 줌.
+```js
+ // 클릭한 곳의 좌표
+    const x = e.clientX;
+    const y = e.clientY;
+
+    // 버튼 내에서만 적용되어야 하기 때문에 버튼의 위치를 적용함.
+    const buttonTop = e.target.offsetTop;
+    const buttonLeft = e.target.offsetLeft;
+
+    // 버튼 내에서 클릭했을 떄 좌표
+    const xInside = x - buttonLeft;
+    const yInside = y - buttonTop;
+
+    const circle = document.createElement('span');
+    circle.classList.add('circle');
+    circle.style.top = yInside + 'px';
+    circle.style.left = xInside + 'px';
+
+    // this를 사용할 때는 화살표 함수가 아닌 일반 함수 형태로 써야 함.
+    this.appendChild(circle);
+```
+
+### 21_Darg N Drop
+💻 주제 : 이미지를 정사각형 박스에 드래그 앤 드롭을 할 수 있음.
+- draggable: true로 설정해 드래그가 가능하도록 함.
+💡 draggable 속성<br>
+웹 페이지 내의 모든 요소는 draggable 속성을 사용하여 드래그될 수 있는 객체(draggable object)로 변환될 수 있다.
+- dragOver, dragEnter, dragLeave, dragDrop 함수를 생성.
+💡 event<br>
+`dragstart` 사용자가 객체(object)를 드래그하려고 시작할 때 발생함.<br>
+`dragenter` 마우스가 대상 객체의 위로 처음 진입할 때 발생함.<br>
+`dragover` 드래그하면서 마우스가 대상 객체의 위에 자리 잡고 있을 때 발생함.<br>
+`drag` 대상 객체를 드래그하면서 마우스를 움직일 때 발생함.<br>
+`drop` 드래그가 끝나서 드래그하던 객체를 놓는 장소에 위치한 객체에서 발생함.<br>
+`dragleave` 드래그가 끝나서 마우스가 대상 객체의 위에서 벗어날 때 발생함.<br>
+`dragend` 대상 객체를 드래그하다가 마우스 버튼을 놓는 순간 발생함.
+
+### 22_Drawing App
+💻 주제 : 
