@@ -421,4 +421,5 @@ hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(hoursForClock, 0
 `dragend` 대상 객체를 드래그하다가 마우스 버튼을 놓는 순간 발생함.
 
 ### 22_Drawing App
-💻 주제 : 
+💻 주제 : 캔버스 요소를 사용한 드로잉.
+`https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API`
