@@ -421,5 +421,18 @@ hourEl.style.transform = `translate(-50%, -100%) rotate(${scale(hoursForClock, 0
 `dragend` 대상 객체를 드래그하다가 마우스 버튼을 놓는 순간 발생함.
 
 ### 22_Drawing App
-💻 주제 : 캔버스 요소를 사용한 드로잉.
-`https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API`
+💻 주제 : 캔버스 요소를 사용한 드로잉. <br>
+https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API
+
+### 23_Kinetic CSS Loader
+💻 주제 : 두 개의 삼각형이 돌아가는 로딩화면
+- keyframe을 사용해 정한 너비안에서 삼각형이 돌아가도록 함.<br>
+https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php 
+
+### 24_Content Placeholder
+💻 주제 : 카드 로드 전에 로딩 화면 만들기
+- animated 클래스가 붙은 것은 로딩화면임.
+- classList의 add, remove 기능을 활용해 animated 상태로 만듦.
+
+### 25_Sticky Navbar
+💻 주제 : 
