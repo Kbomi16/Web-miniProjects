@@ -465,3 +465,26 @@ const sliderHeight = sliderContainer.clientHeight
         }
     }
 ```
+
+### 27_Toast Notification
+💻 주제 : 버튼 클릭 시 하단에 알람이 뜨고 일정시간이 지나면 사라짐.
+- messages 배열에는 알람 메시지 내용을, types 배열에는 텍스트 색상을 지정함.
+- random 함수를 만들어 메시지 내용과 텍스트 색상을 랜덤으로 지정함.
+```js
+function getRandomMessage() {
+  return messages[Math.floor(Math.random() * messages.length)]
+}
+
+function getRandomType() {
+  return types[Math.floor(Math.random() * types.length)]
+}
+```
+- classList의 add 기능으로 div toast 클래스를 추가함과 동시에 css type도 추가함.
+```js
+  const notif = document.createElement('div')
+  notif.classList.add('toast')
+  notif.classList.add(type ? type : getRandomType())
+```
+
+### 28_Github Profiles
+💻 주제 : 깃허브 API로 사용자를 불러와 사용자를 검색해 프로필 데이터를 얻어 카드에 표시함. 또한, 사용자의 최신 리포지토리 5개를 보여줌.
