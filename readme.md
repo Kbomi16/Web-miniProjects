@@ -435,4 +435,33 @@ https://www.w3schools.com/cssref/css3_pr_animation-keyframes.php
 - classList의 add, remove 기능을 활용해 animated 상태로 만듦.
 
 ### 25_Sticky Navbar
-💻 주제 : 
+💻 주제 : 네비바가 고정되어 있는 웹사이트 페이지
+- 스크롤시 네비바 배경 색이 바뀜.
+- 화면의 Y축의 상단값 (window.scrollY)이 네비바의 높이+150(nav.offsetHeight + 150)보다 크면 네비바의 색이 바뀜.
+```js
+function fixNav() {
+  if (window.scrollY > nav.offsetHeight + 150) {
+    nav.classList.add('active')
+  } else {
+    nav.classList.remove('active')
+  }
+}
+```
+
+### 26_Double Vertical Slider
+💻 주제 : 양쪽에 이미지와 텍스트가 있음. 화살표를 눌러 이미지와 텍스트를 바꿀 수 있는 페이지
+- 화살표에 따라 이미지와 텍스트가 바뀌어야 함.
+```js
+const sliderHeight = sliderContainer.clientHeight
+    if(direction === 'up') {
+        activeSlideIndex++
+        if(activeSlideIndex > slidesLength - 1) {
+            activeSlideIndex = 0
+        }
+    } else if(direction === 'down') {
+        activeSlideIndex--
+        if(activeSlideIndex < 0) {
+            activeSlideIndex = slidesLength - 1
+        }
+    }
+```
