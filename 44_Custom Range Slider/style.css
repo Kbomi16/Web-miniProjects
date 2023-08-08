@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  font-family: 'Lato', monospace;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h2 {
+  position: absolute;
+  top: 10px;
+}
+
+.range-container {
+  position: relative;
+}
+
+input[type='range'] {
+  width: 300px;
+  margin: 18px 0;
+  /* range줄이 사라짐 */
+  -webkit-appearance: none;
+}
+
+input[type='range'] + label {
+  background-color: #fff;
+  position: absolute;
+  top: -25px;
+  left: 110px;
+  width: 80px;
+  padding: 5px 0;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+/* 크롬, 사파리에서만 적용되는 스타일 */
+/* 0 ~ 100까지의 트랙 */
+input[type='range']::-webkit-slider-runnable-track {
+  background: purple;
+  border-radius: 5px;
+  width: 100px;
+  height: 10px;
+  cursor: pointer;
+}
+
+/* 트랙 안에 있는 원 */
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid purple;
+  margin-top: -7px;
+  cursor: pointer;
+}
+
+/* 파이어폭스에서만 적용되는 스타일
+/* 0 ~ 100까지의 트랙 */
+/* input[type='range']::-moz-range-track {
+  background: purple;
+  border-radius: 5px;
+  width: 100px;
+  height: 13px;
+  cursor: pointer;
+} */
+
+/* 트랙 안에 있는 원 */
+/* input[type='range']::-moz-range-thumb {
+  -webkit-appearance: none;
+  height: 24px;
+  width: 24px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1px solid purple;
+  margin-top: -7px;
+  cursor: pointer;
+} */
